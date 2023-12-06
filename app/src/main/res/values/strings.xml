@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">FirstStepsKotlin</string>
-    <string name="text_input_user_input_placeholder">Write your text here…</string>
-    <string name="text_view_result_placeholder">Your result will appear here…</string>
-    <string name="button_reverse_action">Reverse!</string>
 </resources>
