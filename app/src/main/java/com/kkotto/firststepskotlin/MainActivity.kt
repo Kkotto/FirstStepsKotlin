@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.kkotto.firststepskotlin.extensions.loadFromSource
+import java.io.FileNotFoundException
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,16 +20,28 @@ class MainActivity : AppCompatActivity() {
         val clearButton: Button = this.findViewById(R.id.clear_button)
 
         searchButton.setOnClickListener {
-            if (inputField.text.isNotEmpty()) {
-                imageView.loadFromSource(inputField.text.toString())
-            } else {
-                val toast = Toast.makeText(this, "URL is empty...", Toast.LENGTH_SHORT)
-                toast.show()
-            }
+            handleSearchButtonListener(inputField.text.toString(), imageView)
         }
 
         clearButton.setOnClickListener {
             inputField.text = ""
         }
+    }
+
+    private fun handleSearchButtonListener(inputField: String, imageView: ImageView) {
+        try {
+            if (inputField.isNotEmpty()) {
+                imageView.loadFromSource(inputField)
+            } else {
+                showToast("URL is empty...")
+            }
+        } catch (exception: FileNotFoundException) {
+            showToast("File's not found...")
+        }
+    }
+
+    private fun showToast(message: String) {
+        val toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
+        toast.show()
     }
 }
