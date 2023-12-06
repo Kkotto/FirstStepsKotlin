@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FirstStepsKotlin</string>
+    <string name="search_button_text">Search!</string>
+    <string name="input_field_hint">Enter link…</string>
+    <string name="clear_button_text">Clear</string>
+    <string name="picture_description">Loaded picture</string>
 </resources>
